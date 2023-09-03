@@ -1,5 +1,6 @@
 import React from "react";
 import { ImFacebook, ImInstagram, ImTwitter, ImGithub } from "react-icons/im";
+import styles from "./Footer.module.css"
 
 const Footer = () => {
   return (
@@ -8,22 +9,22 @@ const Footer = () => {
         <h5>Hit us up on our socials!</h5>
         </div>
 
-        <div className="all-icons-styling">
+        <div className={styles.icons_container}>
     
-          <a href="https://www.devmountain.com" target="_blank"className="icons-styling">
+          <a href="https://www.devmountain.com" target="_blank"className={styles.icons}>
             <ImFacebook size="1.5em" color="#3f3f3f" />
           </a>
           
-          <a href="https://www.devmountain.com" target="_blank"className="icons-styling">
+          <a href="https://www.devmountain.com" target="_blank"className={styles.icons}>
             <ImInstagram size="1.5em" color="#3f3f3f" />
           </a>
         
-          <a href="https://www.devmountain.com" target="_blank" className="icons-styling">
+          <a href="https://www.devmountain.com" target="_blank" className={styles.icons}>
             <ImTwitter size="1.5em" color="#3f3f3f" />
           </a>
          
        
-          <a href="https://www.devmountain.com" target="_blank" className="icons-styling">
+          <a href="https://www.devmountain.com" target="_blank" className={styles.icons}>
             <ImGithub size="1.5em" color="#3f3f3f" />
           </a>
       </div>

@@ -1,25 +1,30 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import styles from './homeComponents/HomeScreen.module.css';
 
-function RecipeCard(props) {
+function RecipeCard({ recipe }) {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/recipe/${recipe.recipe_id}`);
+  };
 
-    const handleClick = () => {
-        navigate(`/recipe/${props.recipe_id}`);
-    }
-
-    return (
-   
-        <div className="recipe-card">
-            <h2 className='recipe-title'>{props.title}</h2>
-
-        <div className="images-container">
-        <img className="recipe-image" src={props.image1} alt="Image 1"/>
-        <button className="recipe-btn" onClick={handleClick} >See More</button>
-        </div>
-        </div>
-    )
+  if (!recipe) {
+    return null;
+  }
+  
+  return (
+    <div className={styles.recipe_card}>
+      <div className={styles.recipe_img_container}>
+        <img src={recipe.image_url} />
+        {/* <img className="recipe-image" src={props.image1} alt="Image 1" /> */}
+      </div>
+      <h2>{recipe.recipe_name}</h2>
+      <button className={styles.recipe_card_btn} onClick={handleClick}>
+        See More
+      </button>
+    </div>
+  );
 }
 
 export default RecipeCard;

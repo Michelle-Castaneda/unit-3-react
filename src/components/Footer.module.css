@@ -1,0 +1,36 @@
+
+footer{
+    display: flex;
+    height: 24vh;
+    background-color: #3f3f3f;
+    justify-content: space-between;
+    padding: 0 60px;
+    align-items: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer_left_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60%;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: large;
+}
+
+.icons_container{
+    display: flex;
+    gap: 5px;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    background-color: #578A8B ;
+    padding: 10px;
+    height: 20px;
+    width: 20px;
+    border-radius: 30px;
+}
