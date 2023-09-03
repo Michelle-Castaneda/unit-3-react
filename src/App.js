@@ -11,8 +11,10 @@ import DetailScreen from "./components/detailComponents/DetailScreen";
 function App() {
   return (
     
+    
     <div className="App">
       <Header />
+      {/* <NewRecipeScreen /> */}
       <Routes>
         <Route index element={<HomeScreen />} />
         <Route path="new-recipe" element={<NewRecipeScreen />}/>

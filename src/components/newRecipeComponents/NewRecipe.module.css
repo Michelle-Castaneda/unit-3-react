@@ -1,93 +1,9 @@
-/* form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 30vw;
-  height: fit-content;
-  gap: 15px;
-  margin-top: 30px;
-}
-
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
- form input, form textarea {
-  border: 1px solid #989898;
-  border-radius: 3px;
-  font-size: 20px;
-}
-form input[type=radio] {
-  height: 35px;
-  width: 35px;
-  border: 3px;
-}
-
-form label {
-  font-size: 20px;
-}
-
-form input:focus {
-  --color: hsl(var(--primary-color), var(--l));
-  border: 1px solid var(--color)
-}
-
-form h5 {
-  color: black;
-}
-
-textarea {
-  width: 100%;
-}
-
-.radio_container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  gap: 25px;
-}
-
-.radio_container span {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.input_container {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  gap: 30px;
-  width: 100%;
-}
-
-.input_container input {
-  width: 100%;
-}
-/* .input_container div {
-  width: 100%;
-} 
-
-.ingredient_inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  width: 50%;
-}
-
-ul {
-  width: 50%;
-} 
-
 .newRecipe_container {
   width: 34vw;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-top: 35px;
   padding-bottom: 15px;
   gap: 15px;
@@ -95,9 +11,52 @@ ul {
   min-height: 61.8vh;
 }
 
-.newRecipe_title {
+.newRecipe_name {
   font-size: 28px;
+  color: black;
+}
+
+.name_image_container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.name_image_container > .inputs {
+  width: 45%;
+}
+
+.radio_container{
+display: flex;
+width: 100%;
+justify-content: space-evenly;
+}
+
+.radio_btn_container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.radio_btn_container > input {
+  width: 29px;
+}
+
+.inputs {
+    border: 1px solid black;
+    border-radius: 0px;
+    height: 35px;
+    padding: 5px;
+  }
   
+
+.inputs:focus {
+  border: 1px solid #d96e27;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: larger;
 }
 
 .save_btn {
@@ -105,7 +64,6 @@ ul {
   border: none;
   padding: 6px 10px;
   color: white;
-  width: 23%;
 }
 
 textarea {
@@ -115,103 +73,34 @@ textarea {
   margin: 10px 0;
 }
 
-.add_btn {
+.time_container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+}
+
+.addAnotherBtn{
   background-color: #df8041;
+  color:aliceblue
+}
+
+.ingredientsBox {
+  display: flex;
+  flex-direction: column;
+  align-items: left; 
+  gap: 10px; 
+}
+
+.addAnotherBtn {
+  background-color: orange; 
   border: none;
-  padding: 6px 10px;
-  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer; 
+  align-self: center;
 }
 
-.add_recipe_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-
+.addAnotherBtn:hover {
+  background-color: darkorange;
 }
-
-.ind_radio_btn_container {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  border: 3px;
-  accent-color: #d96e27;
-}
-
-.radio_btns_container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-  padding: 8px;
-}
-
-.ind_radio_btn_container>input {
-  width: 29px;
-  border: 3px;
-  accent-color: #d96e27;
-  cursor: pointer;
-}
-
-
-.name_image_container {
-  display: flex;
-  justify-content: center;
-  justify-content: space-between;
-  width: 100%;
-}
-.name_image_container>input{
-  width: 45%;
-}
-
-.prep_cook_serve_container {
-  display: flex;
-  justify-content: center;
-  justify-content: space-between;
-}
-
-.prep_cook_serve_container>input {
-  width: 30%;
-}
-
-
-.ing_quant_container {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  width: 100%;
-}
-
-.ing_quant_container_left {
-  display: flex;
-  flex-direction: column;
-  width: 45%;
-  gap: 8px;
-}
-
-.ing_quant_container_right {
-  width: 45%;
-  font-size: 12px;
-}
-
-form input:focus {
-  border: 1px solid #d96e27
-}
-
-input::placeholder {
-  font-size: larger;
-}
-
-textarea::placeholder {
-  font-size: larger;
-}
-
-.inputs {
-  border: solid black;
-  border-radius: 2px;
-  height: 35px;
-  padding: 5px;
-}
-
-*/

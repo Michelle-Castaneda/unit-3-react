@@ -1,0 +1,41 @@
+.ad_banner {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    color: white;
+    background-size: cover;
+  }
+  
+  .ad_text {
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .ad_pineapple {
+    color:#DB7533;
+      font-weight: bold;
+      font-size: 64px;
+    }
+  
+  .ad_h3 {
+    font-size: 24px;
+  }
+  
+  
+  .blue_btn {
+    background-color: #578A8B;
+    border: none;
+    padding: 6px 16px;
+    color: white;
+    font-size: 19px;
+    margin-top: 15px;
+    
+  }

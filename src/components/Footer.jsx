@@ -5,7 +5,7 @@ import styles from "./Footer.module.css"
 const Footer = () => {
   return (
     <footer>
-        <div className="socials">
+        <div className={styles.footer_left_container}>
         <h5>Hit us up on our socials!</h5>
         </div>
 

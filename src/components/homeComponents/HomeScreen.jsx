@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import AdBanner from "./AdBanner";
 import axios from "axios";
 import RecipeContainer from "./RecipeContainer";
-// import RecipeCard from "../../elements/RecipeCard";
+import RecipeCard from "../RecipeCard";
 // import { BiSearchAlt2 } from "react-icons/bi";
 
 

@@ -10,7 +10,7 @@ const Header = () => {
       <Link to="/" >
           <button className={styles.nav_btn}>Home</button>
       </Link>    
-      <Link to="/newRecipe">
+      <Link to="/new-recipe">
           <button className={styles.nav_btn}>Add Recipe</button>
       </Link>    
       </nav>
@@ -19,3 +19,4 @@ const Header = () => {
 };
 
 export default Header;
+

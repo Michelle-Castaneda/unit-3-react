@@ -3,159 +3,166 @@ import { Formik } from "formik";
 import axios from "axios";
 import styles from "./NewRecipe.module.css";
 
+
 const NewRecipeScreen = () => {
-  const [ingredients, setIngredients] = useState([]);
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState("");
+    console.log('Hello from NewRecipeScreen!')
 
-  const addIngredient = () => {
-    setIngredients([...ingredients, { name, quantity }]); //setIngredients to the previous values, add an object that contains both name and quantity.
-    setName("");
-    setQuantity("");
-  };
 
-  const initialValues = {
-    type: "",
-    recipeName: "",
-    imageURL: "",
-    prepTime: "",
-    cookTime: "",
-    serves: "",
-    ingredients: [],
-    instructions: "",
-  };
+    const [ingredients, setIngredients] = useState([]);
+    const [name, setName] = useState("");
+    const [quantity, setQuantity] = useState("");
 
-  const onSubmit = (values) => {
-    values.ingredients = ingredients;
-    console.log(values);
+    const initialValues = {
+        type: "",
+        recipeName: "",
+        imageURL: "",
+        prepTime: "",
+        cookTime: "",
+        serves: "",
+        ingredients: [],
+        instructions: "",
+    };
 
-    axios
-      .post("https://recipes.devmountain.com/recipes", values)
-      .then((response) => {
-        console.log(response.data);
-        alert("Recipe submitted successfully!");
-      })
-      .catch((error) => {
-        console.error("Error submitting the recipe", error);
-        alert("Error submitting the recipe");
-      });
-  };
+    const onSubmit = (values) => {
+        values.ingredients = ingredients;
+        axios
+            .post("https://recipes.devmountain.com/recipes", values)
+            .then((response) => {
+                alert("Recipe submitted successfully!");
+            })
+            .catch((error) => {
+                alert("Error submitting the recipe");
+            });
+    };
 
-  const ingredientDisplay = ingredients.map((ing, index) => {
+    const addIngredient = () => {
+        setIngredients([...ingredients, { name, quantity }]);
+        setName("");
+        setQuantity("");
+    };
+
+    const ingredientDisplay = ingredients.map((ing, index) => (
+        <li>
+            {ing.quantity} {ing.name}
+        </li>
+    ));
+
+    const newForm = (formInfo) => {
+      const { values, handleChange, handleSubmit } = formInfo;
+ 
     return (
-      <li key={index}>
-        {ing.quantity} {ing.name}
-      </li>
+         <form onSubmit={handleSubmit} className={styles.input_container}>
+                        <div className={styles.name_image_container}>
+                            <input
+                                className={styles.inputs}
+                                value={values.recipeName}
+                                onChange={handleChange}
+                                name="recipeName"
+                                placeholder="Name"
+                                type="text"
+                            />
+                            <input
+                                className={styles.inputs}
+                                value={values.imageURL}
+                                onChange={handleChange}
+                                name="imageURL"
+                                placeholder="Image URL"
+                                type="text"
+                            />
+                        </div>
+                        <div className={styles.radio_container}>
+                            <label className={styles.radio_btn_container}>
+                                <input
+                                    name="type"
+                                    value="Cook"
+                                    onChange={handleChange}
+                                    type="radio"
+                                />
+                                Cook
+                            </label>
+                            <label className={styles.radio_btn_container}>
+                                <input
+                                    name="type"
+                                    value="Bake"
+                                    onChange={handleChange}
+                                    type="radio"
+                                />
+                                Bake
+                            </label>
+                            <label className={styles.radio_btn_container}>
+                                <input
+                                    name="type"
+                                    value="Drink"
+                                    onChange={handleChange}
+                                    type="radio"
+                                />
+                                Drink
+                            </label>
+                        </div>
+                        <div className={styles.time_container}>
+                            <input
+                                className={styles.inputs}
+                                value={values.prepTime}
+                                onChange={handleChange}
+                                name="prepTime"
+                                placeholder="Prep Time"
+                                type="number"
+                            />
+                            <input
+                                className={styles.inputs}
+                                value={values.cookTime}
+                                onChange={handleChange}
+                                name="cookTime"
+                                placeholder="Cook Time"
+                                type="number"
+                            />
+                            <input
+                                className={styles.inputs}
+                                value={values.serves}
+                                onChange={handleChange}
+                                name="serves"
+                                placeholder="Serves"
+                                type="number"
+                            />
+                        </div>
+                        <div className={styles.ingredientsBox}>
+                            <input
+                                className={styles.inputs}
+                                type="text"
+                                value={name}
+                                placeholder="Ingredient"
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                            <input
+                                className={styles.inputs}
+                                type="text"
+                                value={quantity}
+                                placeholder="Quantity"
+                                onChange={(e) => setQuantity(e.target.value)}
+                            />
+                            <button className={styles.addAnotherBtn} type="button" onClick={addIngredient}>
+                                Add Another
+                            </button>
+                        </div>
+                        {/* <h3>Added Ingredients:</h3> */}
+                        <ul className={styles.ingredientList}>{ingredientDisplay}</ul>
+                        <textarea
+                            name="instructions"
+                            placeholder="What are the instructions"
+                            onChange={handleChange}
+                        ></textarea>
+                        <button type="submit">Save</button>
+                    </form>
+                );
+              };
+                return(
+                <section className={styles.newRecipe_container}>
+            <h1 className={styles.newRecipe_name}>Tell us about your Recipe!</h1>
+            <Formik initialValues={initialValues} onSubmit={onSubmit}>
+              {newForm}
+            </Formik>
+        </section>
     );
-  });
-
-  return (
-    <section>
-      <h1>Tell us about your Recipe!</h1>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {({ values, handleChange, handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <div className={styles.input_container}>
-              <input
-                type="text"
-                name="recipeName"
-                placeholder="Recipe Name"
-                onChange={handleChange}
-                value={values.recipeName}
-              />
-              <input
-                type="text"
-                name="imageURL"
-                placeholder="Image URL"
-                onChange={handleChange}
-                value={values.imageURL}
-              />
-              <input
-                type="number"
-                name="prepTime"
-                placeholder="Prep Time (in minutes)"
-                onChange={handleChange}
-                value={values.prepTime}
-              />
-              <input
-                type="number"
-                name="cookTime"
-                placeholder="Cook Time (in minutes)"
-                onChange={handleChange}
-                value={values.cookTime}
-              />
-              <input
-                type="number"
-                name="serves"
-                placeholder="Serves (number of people)"
-                onChange={handleChange}
-                value={values.serves}
-              />
-            </div>
-
-            <div className="ingredients">
-              <input
-                type="text"
-                name="ingredient1"
-                placeholder="Ingredient"
-                onChange={(e) => setName(e.target.value)}
-              />
-              <input
-                type="text"
-                name="quantity1"
-                placeholder="Quantity"
-                onChange={(e) => setQuantity(e.target.value)}
-              />
-              <button type="button" onClick={addIngredient}>
-                Add Ingredient
-              </button>
-            </div>
-            <h3>Added Ingredients:</h3>
-    <ul className={styles.ingredientList}>
-      {ingredientDisplay}
-    </ul>
-            <div className="cooking-method">
-              <label>
-                <input
-                  type="radio"
-                  name="cookingMethod"
-                  value="Cook"
-                  onChange={handleChange}
-                />
-                Cook
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="cookingMethod"
-                  value="Bake"
-                  onChange={handleChange}
-                />
-                Bake
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="cookingMethod"
-                  value="Drink"
-                  onChange={handleChange}
-                />
-                Drink
-              </label>
-            </div>
-
-            <textarea
-              name="instructions"
-              placeholder="Instructions"
-              onChange={handleChange}
-            ></textarea>
-
-            <button type="submit">Submit Recipe</button>
-          </form>
-        )}
-      </Formik>
-    </section>
-  );
 };
 
 export default NewRecipeScreen;
